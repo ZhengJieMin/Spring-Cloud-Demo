@@ -26,10 +26,17 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- 注：spring-cloud-config-server-2.0.0 以上版本的HttpClientConfigurableHttpConnectionFactory-->
+		<!--   类中的lookupHttpClientBuilder用到File.separator，在windeow中值为'\'，在linux中值为'/'-->
+		<!--   所以在window中在截取url是会出现数组越界的情况-->
+		<!--解决办法：下载源码，重新编译HttpClientConfigurableHttpConnectionFactory类，替换jar中的class文件-->
+		<!--   lib中的class就是重新编译好的文件-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
