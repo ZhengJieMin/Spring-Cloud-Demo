@@ -1,0 +1,23 @@
+#设置与Eureka Server交互的地址，查询服 务和注册服务都需要依赖这个地址。默认是http://localhost:8761/eureka; 多个 地址可使用，分隔。
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: false
+    fetch-registry: true
+
+spring:
+  cloud:
+    config:
+      label: master #远程仓库的分支
+      profile: dev
+#      uri: http://localhost:8768/
+      discovery:
+        enabled: true #从配置中心读取文件。
+        serviceId: config-server #配置中心的servieId，即服务名
+#logging.level.ROOT=DEBUG
+
+#spring.cloud.config.uri=http://localhost:8768/
+
+
+

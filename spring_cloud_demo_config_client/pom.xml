@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.zjm</groupId>
-	<artifactId>spring_cloud_demo_config</artifactId>
+	<artifactId>spring_cloud_demo_config_client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring_cloud_demo_config</name>
+	<name>spring_cloud_demo_config_client</name>
 	<description>Demo project for Spring Cloud</description>
 
 	<parent>
@@ -22,35 +22,25 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Finchley.BUILD-SNAPSHOT</spring-cloud.version>
+		<spring-cloud.version>Finchley.RC2</spring-cloud.version>
 	</properties>
 
 	<dependencies>
-
-		<!-- 注：spring-cloud-config-server-2.0.0 以上版本的HttpClientConfigurableHttpConnectionFactory-->
-		<!--   类中的lookupHttpClientBuilder用到File.separator，在windeow中值为'\'，在linux中值为'/'-->
-		<!--   所以在window中在截取url是会出现数组越界的情况-->
-		<!--解决办法：下载源码，重新编译HttpClientConfigurableHttpConnectionFactory类，替换jar中的class文件-->
-		<!--   lib中的class就是重新编译好的文件-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<version>2.0.0.RC2</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-			<version>1.4.4.RELEASE</version>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
-		<!--监控中心-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!--监控中心-->
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -81,14 +71,6 @@
 	</build>
 
 	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
 		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
