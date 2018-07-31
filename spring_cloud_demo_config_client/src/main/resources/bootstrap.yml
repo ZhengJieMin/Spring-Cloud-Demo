@@ -9,12 +9,16 @@ eureka:
 spring:
   cloud:
     config:
+      name: demoConfig,demoConfig1,demoConfig2
       label: master #远程仓库的分支
       profile: dev
 #      uri: http://localhost:8768/
       discovery:
         enabled: true #从配置中心读取文件。
         serviceId: config-server #配置中心的servieId，即服务名
+
+
+
 #logging.level.ROOT=DEBUG
 
 #spring.cloud.config.uri=http://localhost:8768/

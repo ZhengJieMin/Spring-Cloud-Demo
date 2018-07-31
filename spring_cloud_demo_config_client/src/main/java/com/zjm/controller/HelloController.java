@@ -11,13 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloController {
-    @Value("${foo}")
-    private String foo;
+//    这种写法不会实时跟新，只会在初始化controller的时候初始化一次
+//    @Value("${foo}")
+//    private String foo;
+//    @Value("${foo1}")
+//    private String foo1;
+//    @Value("${foo2}")
+//    private String foo2;
     @Autowired
     Environment env;
 
+//    @RequestMapping(value = "/hi")
+//    public String sayHi(){
+//        return foo+ "<br>" + foo1+"<br>" + foo2;
+//    }
+
     @RequestMapping(value = "/hi")
-    public String sayHi(){
-        return foo+ "\n" + env.getProperty("foo", "未定义");
+    public String sayHi(@Value("${foo}")String foo,@Value("${foo1}") String foo1,@Value("${foo2}") String foo2){
+        return foo+ "<br>" + foo1+"<br>" + foo2;
     }
 }
